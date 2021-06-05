@@ -4,6 +4,7 @@ from django.views.generic import(
 from django.urls import reverse_lazy
 
 from .models import Todo
+from .forms import TodoForm
 
 # Create your views here.
 
@@ -23,23 +24,23 @@ class TodoDetailView(DetailView):
 
 todo_detail = TodoDetailView.as_view()
 
-class TodoCreateViews(CreateView):
+class TodoCreateView(CreateView):
 
   template_name = 'todo/create.html'
   model = Todo
-  fields = ('title', 'body')
+  form_class = TodoForm
   success_url = reverse_lazy('todo:index')
 
-todo_create = TodoCreateViews.as_view()
+todo_create = TodoCreateView.as_view()
 
-class TodoUpdateViews(UpdateView):
+class TodoUpdateView(UpdateView):
 
   template_name = 'todo/update.html'
   model = Todo
-  fields = ('title', 'body')
+  form_class = TodoForm
   success_url = reverse_lazy('todo:index')
 
-todo_update = TodoUpdateViews.as_view()
+todo_update = TodoUpdateView.as_view()
 
 class TodoDeleteViews(DeleteView):
 
