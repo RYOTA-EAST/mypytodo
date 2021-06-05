@@ -2,10 +2,41 @@
   font-size: 40px;
 }
 
+.font-20{
+  font-size: 20px;
+}
+
+.text-dark-light{
+  color: #4a4a4a;
+}
+
 .bg-gradation{
   background: linear-gradient(45deg, blue, green);
 }
 
 .wrapper{
-  min-height: 960px;
+  min-height: 100vh;
+}
+
+.todo-title{
+  font-size: 18px;
+  color: #4a4a4a;
+}
+
+.plus-btn{
+  position: fixed;
+  bottom: 64px;
+  right: 64px;
+  border-radius: 48px;
+}
+
+.plus-icon{
+  padding: 24px;
+  display: inline-block;
+}
+
+footer{
+  position: absolute;
+  bottom: 0;
+  width: 100%
 }
