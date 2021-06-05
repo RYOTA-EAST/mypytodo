@@ -42,10 +42,10 @@ class TodoUpdateView(UpdateView):
 
 todo_update = TodoUpdateView.as_view()
 
-class TodoDeleteViews(DeleteView):
+class TodoDeleteView(DeleteView):
 
   template_name = 'todo/delete.html'
   model = Todo
   success_url = reverse_lazy('todo:index')
 
-todo_delete = TodoDeleteViews.as_view()
+todo_delete = TodoDeleteView.as_view()
