@@ -1,0 +1,11 @@
+.font-40{
+  font-size: 40px;
+}
+
+.bg-gradation{
+  background: linear-gradient(45deg, blue, green);
+}
+
+.wrapper{
+  min-height: 960px;
+}
