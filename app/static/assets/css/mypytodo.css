@@ -18,6 +18,10 @@
   border-color: #FC7058;
 }
 
+.bg-lightgray{
+  background-color: #dfdfdf;
+}
+
 .bg-gradation{
   background: linear-gradient(45deg, blue, green);
 }
