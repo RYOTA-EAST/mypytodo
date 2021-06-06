@@ -1,0 +1,45 @@
+{% extends 'base.html' %}
+{% load static widget_tweaks %}
+{% block main %}
+
+<section>
+  <div class="container mb-5">
+    <div class="text-center py-2 mb-3">
+      <span class="text-center text-danger font-20 font-weight-bold">Todoを削除します、よろしいですか？</span>
+    </div>
+    <div class="row">
+      <div class="col-11 col-lg-8 mx-auto mb-3">
+        <div class="card border rounded-pill py-3 text-dark-light px-4">
+          <h5 class="mb-0 font-weight-bold font-20">タイトル：{{ todo.title }}</h5>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-11 col-lg-8 mx-auto mb-3">
+        <div class="card border rounded-pill py-3 text-dark-light px-4">
+          <h5 class="mb-0 font-weight-bold font-20">詳細/内容：{{ todo.body|linebreaksbr }}</h5>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="container">
+    <div class="row">
+      <div class="col-6">
+        <div class="text-right">
+          <form action="" method="post">
+            <button type="submit" class="btn bg-white shadow text-pink border-orange">削除する</a>
+            {% csrf_token %}
+          </form>
+        </div>
+      </div>
+      <div class="col-6">
+        <div class="text-left">
+          <a href="{% url 'todo:index' %}" class="btn bg-lightgray shadow text-dark-light border-orange">戻る</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+{% endblock %}
