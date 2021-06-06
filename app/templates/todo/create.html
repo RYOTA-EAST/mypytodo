@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+{% load static widget_tweaks %}
+{% block main %}
+
+<div class="container">
+  <form action="" method="post">
+    <div>
+      <div class="row">
+        <div class="col-sm-7 col-md-6 mx-auto">
+          {% render_field form.title class="form-control mb-3 rounded-pill text-dark-light" placeholder="タイトル" %}
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-sm-7 col-md-6 mx-auto">
+          {% render_field form.body class="form-control mb-3 rounded text-dark-light" placeholder="詳細/内容" %}
+        </div>
+      </div>
+      <div class="text-center">
+        <button type="submit" class="btn btn-lg bg-white text-pink shadow border-orange">作成する</button>
+      </div>
+    </div>
+    {% csrf_token %}
+  </form>
+</div>
+
+{% endblock %}

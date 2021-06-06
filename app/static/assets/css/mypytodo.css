@@ -10,6 +10,18 @@
   color: #4a4a4a;
 }
 
+.text-pink{
+  color: #ff3512;
+}
+
+.border-orange{
+  border-color: #FC7058;
+}
+
+.bg-lightgray{
+  background-color: #dfdfdf;
+}
+
 .bg-gradation{
   background: linear-gradient(45deg, blue, green);
 }
@@ -39,4 +51,13 @@ footer{
   position: absolute;
   bottom: 0;
   width: 100%
+}
+
+.form-control::placeholder{
+  color: #666;
+}
+
+.form-control:focus{
+  border: rgba(122, 122, 122, 0.4);
+  box-shadow: none;
 }
