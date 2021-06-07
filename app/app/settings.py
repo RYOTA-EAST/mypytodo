@@ -96,9 +96,9 @@ AUTH_PASSWORD_VALIDATORS = [
 
 # Core URL settings
 # ログイン機能がある場合はコメントアウトを外す
-# LOGIN_REDIRECT_URL = 'account:index' #ログイン後のダッシュボード
-# LOGIN_URL = 'account:login'
-# LOGOUT_REDIRECT_URL = 'account:login'
+LOGIN_REDIRECT_URL = 'todo:index' #ログイン後のダッシュボード
+LOGIN_URL = 'account:login'
+LOGOUT_REDIRECT_URL = 'account:login'
 
 
 # Internationalization
