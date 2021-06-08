@@ -1,5 +1,6 @@
 from django import forms
 from .models import Todo
+import bootstrap_datepicker_plus as datetimepicker
 
 class TodoForm(forms.ModelForm):
 
@@ -7,5 +8,10 @@ class TodoForm(forms.ModelForm):
     model = Todo
     fields = ('title', 'body', 'status','deadline')
     widgets = {
-      'deadline' : forms.SelectDateWidget 
+          'deadline': datetimepicker.DateTimePickerInput(
+                format='%Y-%m-%d %H:%M:%S',
+                options={
+                    'locale': 'ja',
+                    'dayViewHeaderFormat': 'YYYY年 MMMM',
+                })
     }

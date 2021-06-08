@@ -32,5 +32,8 @@
     {% csrf_token %}
   </form>
 </div>
+{% block extrahead %}
+{{ form.media }}
+{% endblock %}
 
 {% endblock %}
