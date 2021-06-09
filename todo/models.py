@@ -20,3 +20,9 @@ class Todo(models.Model):
   
   def __str__(self):
       return self.title
+
+  def deadline_flag(self):
+    if self.deadline < timezone.now:
+      return 0
+    else:
+      return 1

@@ -14,6 +14,7 @@ class IndexView(LoginRequiredMixin, ListView):
   template_name = 'index.html'
   model = Todo
   context_object_name = 'todos'
+  ordering = ['deadline']
 
 index = IndexView.as_view()
 

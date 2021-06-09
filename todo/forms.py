@@ -9,7 +9,7 @@ class TodoForm(forms.ModelForm):
     fields = ('title', 'body', 'status','deadline')
     widgets = {
           'deadline': datetimepicker.DateTimePickerInput(
-                format='%Y-%m-%d %H:%M:%S',
+                format='%Y-%m-%d %H:%M',
                 options={
                     'locale': 'ja',
                     'dayViewHeaderFormat': 'YYYY年 MMMM',
