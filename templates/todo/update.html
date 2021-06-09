@@ -15,6 +15,16 @@
           {% render_field form.body class="form-control mb-3 rounded text-dark-light" placeholder="詳細/内容" %}
         </div>
       </div>
+      <div class="row">
+        <div class="col-sm-7 col-md-6 mx-auto">
+          {% render_field form.deadline class="form-control mb-3 rounded text-dark-light" %}
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-sm-7 col-md-6 mx-auto">
+          {% render_field form.status class="form-control mb-3 rounded text-dark-light" %}
+        </div>
+      </div>
       <div class="text-center">
         <button type="submit" class="btn btn-lg bg-white text-pink shadow border-orange">更新する</button>
       </div>
@@ -22,5 +32,9 @@
     {% csrf_token %}
   </form>
 </div>
+
+{% block extrahead %}
+{{ form.media }}
+{% endblock %}
 
 {% endblock %}
