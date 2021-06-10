@@ -7,11 +7,25 @@
     <div class="">
       <div class="row">
         <div class="col-11 col-sm-9 col-md-8 col-lg-7 mx-auto">
-        {% regroup todos by deadline.date as todo_list %}
+        {% regroup todos by deadline_flag as todo_list %}
           {% for todo in todo_list %}
-          <span class="text-white">{{todo.grouper}}</span>
+          <h3 class="text-white">
+            {% if todo.grouper == 0 %}
+              期限切れ
+            {% elif todo.grouper == 1 %}
+              もうすぐ期限(3日)
+            {% else %}
+              まだ余裕
+            {% endif %}
+          </h3>
           {% for todo in todo.list %}
-          <div class="card rounded-pill mb-2">
+          <div class="card rounded-pill mb-2
+            {% if todo.deadline_flag == 0 %}
+            bg-danger
+            {% elif todo.deadline_flag == 1 %}
+            bg-warning
+            {% endif %}"
+          >
             <div class="container py-2">
               <div class="row">
                 <div class="col-10 col-md-9">
@@ -23,7 +37,7 @@
                 <div class="col-2 col-md-3">
                   <div class="text-right">
                     <a href="{% url 'todo:todo_delete' todo.pk %}">
-                      <i class="icofont-ui-delete text-danger font-20"></i>
+                      <i class="icofont-ui-delete font-20"></i>
                     </a>
                   </div>
                 </div>

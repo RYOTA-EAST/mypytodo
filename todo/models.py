@@ -1,6 +1,7 @@
 from django.db import models
 from django.db.models.base import Model
 from django.utils import timezone
+import datetime
 
 # Create your models here.
 
@@ -22,7 +23,10 @@ class Todo(models.Model):
       return self.title
 
   def deadline_flag(self):
-    if self.deadline < timezone.now:
+    today = timezone.now()
+    if self.deadline < today:
       return 0
-    else:
+    elif self.deadline <= today + datetime.timedelta(days=3):
       return 1
+    else:
+      return 2
