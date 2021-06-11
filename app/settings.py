@@ -38,6 +38,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'widget_tweaks',
+    'bootstrap_datepicker_plus',
     'app', #追加したapp名
     'account', #追加したapp名
     'todo', #追加したapp名

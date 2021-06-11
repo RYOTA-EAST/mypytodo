@@ -7,25 +7,53 @@
     <div class="">
       <div class="row">
         <div class="col-11 col-sm-9 col-md-8 col-lg-7 mx-auto">
-          {% for todo in todos %}
-          <div class="card rounded-pill mb-2">
+        {% regroup todos by deadline_flag as todo_list %}
+          {% for todo in todo_list %}
+          <h3 class="text-white">
+            {% if todo.grouper == 0 %}
+              期限切れ
+            {% elif todo.grouper == 1 %}
+              もうすぐ期限(3日)
+            {% else %}
+              まだ余裕
+            {% endif %}
+          </h3>
+          {% for todo in todo.list %}
+          <div class="card rounded-pill mb-2
+            {% if todo.deadline_flag == 0 %}
+              border-red alert-danger
+            {% elif todo.deadline_flag == 1 %}
+              border-yellow alert-warning
+            {% endif %}"
+          >
             <div class="container py-2">
               <div class="row">
                 <div class="col-10 col-md-9">
                   <div class="px-3">
-                    <a href="{% url 'todo:todo_detail' todo.pk %}" class="todo-title">{{ todo.title }}</a>
+                    <div class="badge 
+                    {% if todo.status == 1 %}
+                      badge-secondary
+                    {% elif todo.status == 2 %}
+                      badge-primary
+                    {% elif todo.status == 3 %}
+                      badge-success
+                    {% endif %}
+                    ">{{ todo.get_status_display }}</div>
+                    <a href="{% url 'todo:todo_detail' todo.pk %}" class="todo-title">{{ todo.title }}</a><br>
+                    <span>{{ todo.deadline }}</span>
                   </div>
                 </div>
                 <div class="col-2 col-md-3">
                   <div class="text-right">
                     <a href="{% url 'todo:todo_delete' todo.pk %}">
-                      <i class="icofont-ui-delete text-danger font-20"></i>
+                      <i class="icofont-ui-delete font-20"></i>
                     </a>
                   </div>
                 </div>
               </div>
             </div>
           </div>
+          {% endfor %}
           {% endfor %}
         </div>
       </div>

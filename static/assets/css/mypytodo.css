@@ -18,6 +18,14 @@
   border-color: #FC7058;
 }
 
+.border-red{
+  border: solid 5px red;
+}
+
+.border-yellow{
+  border: solid 5px yellow;
+}
+
 .bg-lightgray{
   background-color: #dfdfdf;
 }
