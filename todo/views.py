@@ -15,6 +15,7 @@ class IndexView(LoginRequiredMixin, ListView):
   model = Todo
   context_object_name = 'todos'
   ordering = ['deadline']
+  queryset = Todo.objects.filter(status__in=[1, 2])
 
 index = IndexView.as_view()
 

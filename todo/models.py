@@ -6,7 +6,7 @@ import datetime
 # Create your models here.
 
 class Todo(models.Model):
-  STATUS_CHOICES = [(1, '未完了'),(2, '作業中'),(3, '完了')]
+  STATUS_CHOICES = [(1, '未着手'),(2, '作業中'),(3, '完   了')]
 
   title = models.CharField('タイトル', max_length=55)
   body = models.TextField('詳細/内容', max_length=200)
