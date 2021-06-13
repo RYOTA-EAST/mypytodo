@@ -3,6 +3,7 @@ from django.views.generic import(
 )
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.urls import reverse_lazy
+from django.shortcuts import redirect
 
 from .models import Todo
 from .forms import TodoForm
@@ -14,8 +15,9 @@ class IndexView(LoginRequiredMixin, ListView):
   template_name = 'index.html'
   model = Todo
   context_object_name = 'todos'
-  ordering = ['deadline']
-  queryset = Todo.objects.filter(status__in=[1, 2, 3])
+
+  def get_queryset(self):
+    return Todo.objects.filter(create_user_id = self.request.user.id).filter(status__in=[1, 2]).order_by('deadline')
 
 index = IndexView.as_view()
 
@@ -33,6 +35,12 @@ class TodoCreateView(LoginRequiredMixin, CreateView):
   model = Todo
   form_class = TodoForm
   success_url = reverse_lazy('todo:index')
+
+  def form_valid(self, form):
+    qryset = form.save(commit=False)
+    qryset.create_user = self.request.user
+    qryset.save()
+    return redirect('todo:index') 
 
 todo_create = TodoCreateView.as_view()
 
