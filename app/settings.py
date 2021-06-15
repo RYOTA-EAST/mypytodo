@@ -151,3 +151,23 @@ DATA_UPLOAD_MAX_MEMORY_SIZE = 15728640
 django_heroku.settings(locals())
 
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+
+# Twilio SendGrid
+#パターン②
+# EMAIL_HOST = 'smtp.sendgrid.net'
+# EMAIL_PORT = 587
+# EMAIL_USE_TLS = True
+# EMAIL_HOST_USER = 'apikey'
+# EMAIL_HOST_PASSWORD = env('SENDGRID_API_KEY')
+# print(EMAIL_HOST_PASSWORD)
+
+#パターン①
+# EMAIL_HOST = 'smtp.sendgrid.net'
+# EMAIL_HOST_USER = 'sgr7zwnn@kke.com' #ログイン時のユーザー名
+# EMAIL_HOST_PASSWORD = 'ryouta@777'
+# EMAIL_PORT = 587
+# EMAIL_USE_TLS = True
+
+EMAIL_BACKEND = "sendgrid_backend.SendgridBackend"
+SENDGRID_API_KEY = env('SENDGRID_API_KEY')
+SENDGRID_SANDBOX_MODE_IN_DEBUG = False
