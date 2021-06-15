@@ -1,0 +1,47 @@
+{% extends 'base.html' %}
+{% load static widget_tweaks %}
+{% block main %}
+<div class="container text-white">
+  <form method="post" action="">
+    {% if f.errors %}
+      <p>{{ f.non_field_errors }}</p>
+    {% endif %}
+    <div>
+      <div class="row">
+        <div class="col-sm-7 col-md-6 mx-auto">
+          {% render_field form.username class="form-control mb-3 rounded-pill text-dark-light" placeholder="ユーザー名" %}
+        </div>
+      </div>
+      <div class="col-sm-7 col-md-6 mx-auto">
+        <p>{{ form.username.help_text }}</p>
+      </div>
+      <div class="row">
+        <div class="col-sm-7 col-md-6 mx-auto">
+          {% render_field form.email class="form-control mb-3 rounded-pill text-dark-light" placeholder="メールアドレス" %}
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-sm-7 col-md-6 mx-auto">
+          {% render_field form.password1 class="form-control mb-3 rounded-pill text-dark-light" placeholder="パスワード" %}
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-sm-7 col-md-6 mx-auto">
+          {% render_field form.password2 class="form-control mb-3 rounded-pill text-dark-light" placeholder="パスワード(確認用)" %}
+        </div>
+      </div>
+      <div class="col-sm-7 col-md-6 mx-auto">
+        {{ form.password1.help_text }}
+      </div>
+      <div class="error-message ol-sm-7 col-md-6 mx-auto bg-danger">
+        <p>{{ form.password1.errors }}</p>
+        <p>{{ form.password2.errors }}</p>
+      </div>
+      <div class="text-center">
+        <button type="submit" class="btn btn-lg bg-white text-pink shadow border-orange">新規登録</button>
+      </div>
+    </div>
+    {% csrf_token %}
+  </form>
+</div>
+{% endblock %}

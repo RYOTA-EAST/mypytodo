@@ -1,5 +1,7 @@
+from django.contrib.auth import get_user_model
 from django.db import models
 from django.db.models.base import Model
+from django.db.models.deletion import CASCADE
 from django.utils import timezone
 import datetime
 
@@ -14,6 +16,7 @@ class Todo(models.Model):
   deadline = models.DateTimeField('期限', default=timezone.now)
   created = models.DateTimeField('作成日時', auto_now_add=True)
   updated = models.DateTimeField('更新日時', auto_now=True)
+  create_user = models.ForeignKey(get_user_model(), on_delete=CASCADE, default=1)
   
   def publish(self):
     self.update_at = timezone.now()
