@@ -151,3 +151,9 @@ DATA_UPLOAD_MAX_MEMORY_SIZE = 15728640
 django_heroku.settings(locals())
 
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+
+#sendgrid
+
+EMAIL_BACKEND = "sendgrid_backend.SendgridBackend"
+SENDGRID_API_KEY = env('SENDGRID_API_KEY')
+SENDGRID_SANDBOX_MODE_IN_DEBUG = False
