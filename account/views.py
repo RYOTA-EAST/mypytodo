@@ -12,6 +12,7 @@ from django.contrib.auth.forms import UserCreationForm
 from django.contrib.sites.shortcuts import get_current_site
 from django.core.signing import BadSignature, SignatureExpired, loads, dumps
 from django.template.loader import render_to_string
+from django.http import JsonResponse
 
 from .forms import UserCreationForm
 
@@ -67,20 +68,17 @@ class SignUpCompleteView(View):
         token = kwargs.get('token')
         try:
             user_id = loads(token, max_age=self.timeout_seconds)
-
         # 期限切れの場合
         except SignatureExpired:
-            return HttpResponseBadRequest()
-
+            return JsonResponse({'message': 'signatureexpired'})
         # tokenが間違っている場合
         except BadSignature:
-            return HttpResponseBadRequest()
-
+            return JsonResponse({'message': 'bad signature'})
         else:
             try:
                 user = User.objects.get(id=user_id)
             except User.DoesNotExist:
-                return HttpResponseBadRequest()
+                return JsonResponse({'message': 'user not exist'})
             else:
                 if not user.is_active:
                     user.is_active = True
@@ -88,7 +86,6 @@ class SignUpCompleteView(View):
                     messages.success(request, 'アカウントの作成が完了しました。登録した情報でログインを行なってください。')
                     login_url = reverse_lazy('account:login')
                     return HttpResponseRedirect(login_url)
-
         return HttpResponseBadRequest()
 
 sign_up_complete = SignUpCompleteView.as_view()
