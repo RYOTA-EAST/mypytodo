@@ -86,6 +86,8 @@ class SignUpCompleteView(View):
                     messages.success(request, 'アカウントの作成が完了しました。登録した情報でログインを行なってください。')
                     login_url = reverse_lazy('account:login')
                     return HttpResponseRedirect(login_url)
+                else:
+                    messages.success(request, '既にアカウント作成が完了しています。ログインを行なってください。')
         return HttpResponseBadRequest()
 
 sign_up_complete = SignUpCompleteView.as_view()
