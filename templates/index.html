@@ -40,7 +40,7 @@
                     {% endif %}
                     ">{{ todo.get_status_display }}</div>
                     <a href="{% url 'todo:todo_detail' todo.pk %}" class="todo-title">{{ todo.title }}</a><br>
-                    <span>{{ todo.deadline }}</span>
+                    <span>{{ todo.deadline|date:"Y/n/j(D) H:i" }}</span>
                   </div>
                 </div>
                 <div class="col-2 col-md-3">

@@ -1,10 +1,15 @@
 {% load static %}
 <nav class="text-center">
   <a class="navbar-brand py-4 mt-4 text-light font-40 font-weight-bold" href="/">Mypytodo</a>
+  <span class="navbar-brand py-4 mt-4 text-light font-20" href="/">
+    TODAY : {% now "Y" %}/{% now "n" %}/{% now "j" %}({% now "D" %})
+  </span>
   <div class="login mb-4">
     {% if user.is_authenticated %}
-    <a class="btn btn-primary mr-4">ユーザ名：{{ user.get_username }}</a>
-    <a class="btn btn-danger" href="{% url 'account:logout' %}">ログアウト</a>
+    <div class="login mb-4">
+      <a class="btn btn-primary mr-4">ユーザ名：{{ user.get_username }}</a>
+      <a class="btn btn-danger" href="{% url 'account:logout' %}">ログアウト</a>
+    </div>
     {% else %}
     <a class="btn btn-success" href="{% url 'account:signup' %}">新規登録</a>
     {% endif %}
