@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     'app', #追加したapp名
     'account', #追加したapp名
     'todo', #追加したapp名
+    'rest_framework',
 ]
 
 MIDDLEWARE = [
