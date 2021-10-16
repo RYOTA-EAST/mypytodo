@@ -42,6 +42,8 @@ INSTALLED_APPS = [
     'app', #追加したapp名
     'account', #追加したapp名
     'todo', #追加したapp名
+    'rest_framework',
+    'django_filters'
 ]
 
 MIDDLEWARE = [
@@ -155,3 +157,8 @@ django_heroku.settings(locals())
 EMAIL_BACKEND = "sendgrid_backend.SendgridBackend"
 SENDGRID_API_KEY = env('SENDGRID_API_KEY')
 SENDGRID_SANDBOX_MODE_IN_DEBUG = False
+
+REST_FRAMEWORK = {
+    #フィルタを追加
+    'DEFAULT_FILTER_BACKENDS': ('django_filters.rest_framework.DjangoFilterBackend',)
+}
