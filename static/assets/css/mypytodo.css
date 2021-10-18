@@ -69,3 +69,9 @@ footer{
   border: rgba(122, 122, 122, 0.4);
   box-shadow: none;
 }
+
+.todo{
+  height: calc(100vh - 24px - 160px - 56px);
+  overflow-y: auto;
+  overflow-x: hidden;
+}
