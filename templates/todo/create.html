@@ -5,24 +5,26 @@
 <div class="container">
   <form action="" method="post">
     <div>
-      <div class="row">
-        <div class="col-sm-7 col-md-6 mx-auto">
-          {% render_field form.title class="form-control mb-3 rounded-pill text-dark-light" placeholder="タイトル" %}
+      <div class="todo-form">
+        <div class="row">
+          <div class="col-sm-7 col-md-6 mx-auto">
+            {% render_field form.title class="form-control mb-3 rounded-pill text-dark-light" placeholder="タイトル" %}
+          </div>
         </div>
-      </div>
-      <div class="row">
-        <div class="col-sm-7 col-md-6 mx-auto">
-          {% render_field form.body class="form-control mb-3 rounded text-dark-light" placeholder="詳細/内容" %}
+        <div class="row">
+          <div class="col-sm-7 col-md-6 mx-auto">
+            {% render_field form.body class="form-control mb-3 rounded text-dark-light" placeholder="詳細/内容" %}
+          </div>
         </div>
-      </div>
-      <div class="row">
-        <div class="col-sm-7 col-md-6 mx-auto">
-          {% render_field form.deadline class="form-control mb-3 rounded text-dark-light" %}
+        <div class="row">
+          <div class="col-sm-7 col-md-6 mx-auto">
+            {% render_field form.deadline class="form-control mb-3 rounded text-dark-light" %}
+          </div>
         </div>
-      </div>
-      <div class="row">
-        <div class="col-sm-7 col-md-6 mx-auto">
-          {% render_field form.status class="form-control mb-3 rounded text-dark-light" %}
+        <div class="row">
+          <div class="col-sm-7 col-md-6 mx-auto">
+            {% render_field form.status class="form-control mb-3 rounded text-dark-light" %}
+          </div>
         </div>
       </div>
       <div class="text-center">

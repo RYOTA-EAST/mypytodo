@@ -75,3 +75,9 @@ footer{
   overflow-y: auto;
   overflow-x: hidden;
 }
+
+.todo-form{
+  height: calc(100vh - 43vh);
+  overflow-y: auto;
+  overflow-x: hidden;
+}
